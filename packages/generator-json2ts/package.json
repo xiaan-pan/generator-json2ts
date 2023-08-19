@@ -1,0 +1,24 @@
+{
+  "name": "generator-json2ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "generator-json2ts": "./bin/index.js",
+    "json2ts": "./bin/index.js"
+  },
+  "keywords": [],
+  "author": "xiaan-pan <1967914901@qq.com>",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^11.0.0",
+    "figlet": "^1.6.0",
+    "inquirer": "^7.3.3",
+    "ora": "^5.4.1",
+    "semver": "^7.5.4",
+    "ts-morph": "^19.0.0"
+  }
+}

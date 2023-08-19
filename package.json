@@ -1,0 +1,12 @@
+{
+  "name": "generator-json2ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "xiaan-pan <1967914901@qq.com>",
+  "license": "ISC"
+}

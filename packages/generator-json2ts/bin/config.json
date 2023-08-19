@@ -1,0 +1,8 @@
+{
+    "isForceOverwrite": 0,
+    "defaultInterfaceName": "RootInterface",
+    "nameStyle": "underline",
+    "prefix": "",
+    "defaultInputPath": "./input.json",
+    "defaultOutputPath": "./output.ts"
+}
