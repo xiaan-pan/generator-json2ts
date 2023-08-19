@@ -1,0 +1,16 @@
+{
+    "name": "app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "json2ts": "json2ts"
+    },
+    "dependencies": {
+      "generatorjson2ts": "workspace:*"
+    },
+    "keywords": [],
+    "author": "p1967914901 <1967914901@qq.com>",
+    "license": "ISC"
+  }
+  
