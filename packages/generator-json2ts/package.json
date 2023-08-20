@@ -1,6 +1,6 @@
 {
   "name": "generator-json2ts",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "generator-json2ts": "./bin/index.js",
     "json2ts": "./bin/index.js"
   },
-  "keywords": [],
+  "keywords": ["JSON", "json", "TS", "TypeScript", "cli", "json2ts"],
   "repository": {
     "type": "git",
     "url": "https://github.com/xiaan-pan/generator-json2ts.git"
