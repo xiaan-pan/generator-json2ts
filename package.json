@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": ["JSON", "json", "TS", "TypeScript", "cli", "json2ts"],
   "repository": {
     "type": "git",
     "url": "https://github.com/xiaan-pan/generator-json2ts.git"
