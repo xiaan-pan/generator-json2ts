@@ -11,6 +11,10 @@
     "json2ts": "./bin/index.js"
   },
   "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiaan-pan/generator-json2ts.git"
+  },
   "author": "xiaan-pan <1967914901@qq.com>",
   "license": "ISC",
   "dependencies": {
