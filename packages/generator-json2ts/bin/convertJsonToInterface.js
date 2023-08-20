@@ -51,10 +51,10 @@ function generator(jsonData, config) {
                         throw new TypeError(`The '${key}' does not conform to the identifier naming convention`);
                     }
                     if (Array.isArray(value)) {
-                        const arrayType = typeof value[0] === 'object' && value[0] !== null ? `${interfaceName}_${key}[]` : `${value[0] !== null ? typeof value[0] : null}[]`;
-                        interfaceDeclaration.addProperty({ name: key, type: setInterfaceName(arrayType, nameStyle) });
+                        const arrayType = typeof value[0] === 'object' && value[0] !== null ? setInterfaceName(`${interfaceName}_${key}[]`, nameStyle) : `${value[0] !== null ? typeof value[0] : null}[]`;
+                        interfaceDeclaration.addProperty({ name: key, type: arrayType });
                         if (typeof value[0] === 'object' && value[0] !== null) {
-                            convertJsonToInterface(value[0], `${interfaceName}_${key}`);
+                            convertJsonToInterface(value[0], setInterfaceName(`${interfaceName}_${key}`, nameStyle));
                         }
                     } else if (typeof value === 'object' && value !== null) {
                         const nestedInterfaceName = setInterfaceName(`${interfaceName}_${key}`, nameStyle);

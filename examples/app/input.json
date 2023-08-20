@@ -1,16 +1,26 @@
-{
-    "name": "app",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-      "json2ts": "json2ts"
-    },
-    "dependencies": {
-      "generatorjson2ts": "workspace:*"
-    },
-    "keywords": [],
-    "author": "p1967914901 <1967914901@qq.com>",
-    "license": "ISC"
-  }
-  
+[{
+    "name": "John",
+    "age": 25,
+    "email": "john@example.com",
+    "child": [{
+        "name": "John",
+        "age": 2
+    }, {
+        "name": "John",
+        "age": 2
+    }],
+    "hobbies": ["reading", "swimming"],
+    "a": null,
+    "b": "",
+    "c": [null],
+    "d": [""],
+    "e": [1],
+    "f": {
+        "name": "hello",
+        "age": 2,
+        "child": [{
+            "name": "hello",
+            "age": 2
+        }]
+    }
+}]

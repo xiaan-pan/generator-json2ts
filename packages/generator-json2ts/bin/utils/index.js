@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
+const http = require('http');
 const semver = require('semver');
 
 const NODE_VERSION = 'v16.19.1';
@@ -33,6 +34,51 @@ function readJsonFile(filePath) {
         result.error = error;
     }
     return result;
+}
+
+/**
+ * Request url to get json data
+ * @param {string} url The json data source link
+ * @param {'GET' | 'POST'} method Request method
+ * @param {JSON} data The data carried by the post request
+ * @returns {JSON} JSON Object
+ */
+function getJSONFromURL(url, method, data) {
+    const options = {
+        method,
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
+
+    return new Promise((resolve, reject) => {
+        const req = http.request(url, options, (response) => {
+            let responseData = '';
+
+            response.on('data', (chunk) => {
+                responseData += chunk;
+            });
+
+            response.on('end', () => {
+                try {
+                    const json = JSON.parse(responseData);
+                    resolve(json);
+                } catch (error) {
+                    reject(`The data returned in response is not a JSON object`);
+                }
+            });
+        });
+
+        req.on('error', (error) => {
+            reject(error);
+        });
+
+        if (method === 'POST' && data) {
+            req.write(JSON.stringify(data));
+        }
+
+        req.end();
+    });
 }
 
 /**
@@ -135,8 +181,8 @@ function updateConfig(newConfig) {
     const result = readJsonFile(path.join(__dirname, '../config.json'));
     if (result.success === 1) {
         const { data } = result;
-        for(let key in newConfig) {
-            if(newConfig.hasOwnProperty(key) && newConfig[key] && data.hasOwnProperty(key)) {
+        for (let key in newConfig) {
+            if (newConfig.hasOwnProperty(key) && newConfig[key] && data.hasOwnProperty(key)) {
                 data[key] = updateStrategy[key](newConfig[key]);
             }
         }
@@ -211,7 +257,7 @@ function checkLatestVersion(packageName, version) {
  */
 async function checkRelatedVersions(packageName, version) {
     await CheckNodeVersion();
-    
+
     try {
         const result = await checkLatestVersion(packageName, version);
 
@@ -221,7 +267,7 @@ async function checkRelatedVersions(packageName, version) {
             console.log('\x1b[33m%s\x1b[0m', `A newer version (${result.latestVersion}) is available.`);
             console.log('\x1b[33m%s\x1b[0m', `Run 'npm install -g ${pkg.name}' to update.`);
         }
-    } catch(err) {
+    } catch (err) {
         console.error('\x1b[33m%s%s\x1b[0m', 'warn:', err.message);
     }
 }
@@ -229,6 +275,7 @@ async function checkRelatedVersions(packageName, version) {
 module.exports = {
     checkFileExists,
     readJsonFile,
+    getJSONFromURL,
     writeJsonFile,
     isValidIdentifier,
     setInterfaceName,

@@ -1,19 +1,31 @@
-export interface RootInterface {
+export interface RootInterfaceItem {
     name: string;
-    version: string;
-    description: string;
-    main: string;
-    scripts: RootInterface_scripts;
-    dependencies: RootInterface_dependencies;
-    keywords: undefined[];
-    author: string;
-    license: string;
+    age: number;
+    email: string;
+    child: RootInterfaceItem_child[];
+    hobbies: string[];
+    a: null;
+    b: string;
+    c: null[];
+    d: string[];
+    e: number[];
+    f: RootInterfaceItem_f;
 }
 
-export interface RootInterface_scripts {
-    json2ts: string;
+export interface RootInterfaceItem_child {
+    name: string;
+    age: number;
 }
 
-export interface RootInterface_dependencies {
-    generatorjson2ts: string;
+export interface RootInterfaceItem_f {
+    name: string;
+    age: number;
+    child: RootInterfaceItem_f_child[];
 }
+
+export interface RootInterfaceItem_f_child {
+    name: string;
+    age: number;
+}
+
+export type RootInterface = RootInterfaceItem[];
